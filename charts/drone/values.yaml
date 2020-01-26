@@ -123,14 +123,14 @@ emptyDir:
 
 ## If you'd like to provide your own Kubernetes Secret object instead of passing your values
 ## in un-encrypted, pass in the name of a created + populated Secret in the same Namespace
-## as the Drone Server. All secrets within this configmap will be mounted as environment
+## as the Drone server. All secrets within this configmap will be mounted as environment
 ## variables, with each key/value mapping to a corresponding environment variable on the
 ## Drone server.
 ##
 secretMounts: []
 # - name: drone-secrets
 
-## The keys within the "env" map are mounted as environment variables on the Drone Server pod.
+## The keys within the "env" map are mounted as environment variables on the Drone server pod.
 ## See the full reference of Drone server environment variables here:
 ## Ref: https://docs.drone.io/installation/reference/
 ##
@@ -143,7 +143,7 @@ env:
   ##
   DRONE_SERVER_PROTO: http
 
-  ## REQUIRED: Set the secret secret token that the Drone Server and its Runners will use
+  ## REQUIRED: Set the secret secret token that the Drone server and its Runners will use
   ## to authenticate. This is commented out in order to leave you the ability to set the
   ## key via a separately provisioned secret (see existingSecretName above).
   ## Ref: https://docs.drone.io/installation/reference/drone-rpc-secret/
