@@ -1,0 +1,22 @@
+apiVersion: v2
+name: drone
+description: Drone is a self-service Continuous Delivery platform for busy development teams
+type: application
+version: 0.1.0
+kubeVersion: "^1.13.0-0"
+home: https://drone.io/
+icon: https://drone.io/apple-touch-icon.png
+keywords:
+  - continuous-delivery
+  - continuous-deployment
+  - continuous-integration
+  - docker
+  - drone
+  - drone.io
+  - go
+sources:
+  - https://github.com/drone/drone
+  - https://github.com/drone/helm
+maintainers:
+  - name: Drone
+    email: hello@drone.io
