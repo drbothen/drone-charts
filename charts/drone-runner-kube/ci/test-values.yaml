@@ -1,0 +1,5 @@
+# This values file is used during CI tests.
+env:
+  DRONE_RPC_HOST: drone.example.com
+  DRONE_RPC_PROTO: http
+  DRONE_RPC_SECRET: test-secret
