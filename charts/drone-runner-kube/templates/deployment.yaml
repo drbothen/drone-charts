@@ -5,8 +5,7 @@ metadata:
   labels:
     {{- include "drone-runner-kube.labels" . | nindent 4 }}
 spec:
-  {{/* Drone server is a singleton. */}}
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       {{- include "drone-runner-kube.selectorLabels" . | nindent 6 }}
@@ -27,6 +26,7 @@ spec:
       serviceAccountName: {{ include "drone-runner-kube.fullname" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       containers:
         - name: server
           securityContext:
@@ -42,14 +42,22 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "drone-runner-kube.fullname" . }}
-          {{- range .Values.secretMounts }}
+          {{- range .Values.extraSecretNamesForEnvFrom }}
             - secretRef:
-                name: {{ .name }}
+                name: {{ . }}
           {{- end }}
-      {{- with .Values.nodeSelector }}
+        {{- with .Values.extraVolumeMounts }}
+          volumeMounts:
+            {{ toYaml . | nindent 12 }}
+        {{- end }}
+    {{- if .Values.extraVolumes }}
+      volumes:
+        {{ toYaml .Values.extraVolumes | nindent 8}}
+    {{- end }}
+    {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+    {{- end }}
     {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

@@ -5,6 +5,8 @@
   "required": [
     "image",
     "imagePullSecrets",
+    "replicaCount",
+    "terminationGracePeriodSeconds",
     "nameOverride",
     "fullnameOverride",
     "podSecurityContext",
@@ -16,7 +18,9 @@
     "nodeSelector",
     "tolerations",
     "affinity",
-    "secretMounts",
+    "extraVolumes",
+    "extraVolumeMounts",
+    "extraSecretNamesForEnvFrom",
     "env"
   ],
   "properties": {
@@ -47,6 +51,15 @@
     "imagePullSecrets": {
       "$id": "#/properties/imagePullSecrets",
       "type": "array"
+    },
+    "replicaCount": {
+      "$id": "#/properties/replicaCount",
+      "type": "integer",
+      "minimum": 0
+    },
+    "terminationGracePeriodSeconds": {
+      "$id": "#/properties/terminationGracePeriodSeconds",
+      "type": "integer"
     },
     "nameOverride": {
       "$id": "#/properties/nameOverride",
@@ -131,8 +144,20 @@
       "$id": "#/properties/affinity",
       "type": "object"
     },
-    "secretMounts": {
-      "$id": "#/properties/secretMounts",
+    "rbac": {
+      "$id": "#/properties/rbac",
+      "type": "object"
+    },
+    "extraVolumes": {
+      "$id": "#/properties/extraVolumes",
+      "type": "array"
+    },
+    "extraVolumeMounts": {
+      "$id": "#/properties/extraVolumeMounts",
+      "type": "array"
+    },
+    "extraSecretNamesForEnvFrom": {
+      "$id": "#/properties/extraSecretNamesForEnvFrom",
       "type": "array"
     },
     "env": {

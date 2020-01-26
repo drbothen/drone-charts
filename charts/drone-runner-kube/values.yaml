@@ -10,6 +10,16 @@ image:
 imagePullSecrets: []
 # - name: "image-pull-secret"
 
+## For small or experimental deployments of the Kubernetes runner, 1 replica will suffice.
+## For production cases, 2-3 are recommended. This does not grant additional parallelism,
+## but does ensure that upgrades, config changes, and disruptions are handled more gracefully.
+replicaCount: 1
+
+## When the runner receives a SIGTERM/SIGINT (config update, upgrade, etc), it will wait until
+## all jobs that particular pod has spawned complete. It is for this reason that you'll want
+## to make sure that this value is longer than your longest job.
+terminationGracePeriodSeconds: 3600
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -63,35 +73,48 @@ tolerations: []
 
 affinity: {}
 
+extraVolumes: []
+extraVolumeMounts: []
+
 ## If you'd like to provide your own Kubernetes Secret object instead of passing your values
 ## in un-encrypted, pass in the name of a created + populated Secret in the same Namespace
 ## as the Kubernetes runner. All secrets within this configmap will be mounted as environment
 ## variables, with each key/value mapping to a corresponding environment variable on the
 ## Kubernetes runner.
 ##
-secretMounts: []
-# - name: drone-secrets
+extraSecretNamesForEnvFrom: []
+# - my-drone-secrets
+
+## Each namespace listed below will be configured such that the runner can run build Pods in
+## it. This comes in the form of a Role and a RoleBinding. If you change env.DRONE_NAMESPACE_DEFAULT
+## or the other DRONE_NAMESPACE_* variables, make sure to update this list to include all
+## namespaces.
+rbac:
+  buildNamespaces:
+    - default
 
 ## The keys within the "env" map are mounted as environment variables on the Kubernetes runner pod.
 ## See the full reference of Kubernetes runner environment variables here:
 ## Ref: https://kube-runner.docs.drone.io/installation/reference/
 ##
 env:
-  ## REQUIRED: The hostname/IP (and optionally the port) for your Kubernetes runner.
-  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-host/
-  ##
-  DRONE_RPC_HOST: drone
-  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-proto/
-  ##
-  DRONE_RPC_PROTO: http
-  ## Determines which Kubernetes namespace to create the build Jobs in.
-  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-namespace-default/
-  ##
-  DRONE_NAMESPACE_DEFAULT: drone
-
   ## REQUIRED: Set the secret secret token that the Kubernetes runner and its runners will use
   ## to authenticate. This is commented out in order to leave you the ability to set the
   ## key via a separately provisioned secret (see existingSecretName above).
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-secret/
   ##
   # DRONE_RPC_SECRET:
+
+  ## REQUIRED: The hostname/IP (and optionally the port) for your Kubernetes runner.
+  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-host/
+  ##
+  DRONE_RPC_HOST: drone
+
+  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-proto/
+  ##
+  DRONE_RPC_PROTO: http
+
+  ## Determines which Kubernetes namespace to create the build Jobs in.
+  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-namespace-default/
+  ##
+  DRONE_NAMESPACE_DEFAULT: default
