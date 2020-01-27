@@ -6,7 +6,7 @@ This Chart is for installing the [Kubernetes runner](https://kube-runner.docs.dr
 
 ## Installing Drone Kubernetes runner
 
-See the [drone chart installation guide](./docs/install.md).
+See the [drone-runner-kube chart installation guide](./docs/install.md).
 
 ## Configuring Drone Kubernetes runner
 
