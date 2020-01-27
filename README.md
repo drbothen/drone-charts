@@ -13,7 +13,7 @@ Read and follow the [Helm installation guide](https://helm.sh/docs/intro/install
 In order to be able to use the charts in this repository, add the name and URL to your Helm client:
 
 ```console
-helm repo add drone https://charts.drone.io/
+helm repo add drone https://gtaylor.github.io/drone-charts/
 helm repo update
 ```
 
