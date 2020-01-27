@@ -38,6 +38,10 @@ Due to rapid churn in the Kubernetes ecosystem, charts in this repository assume
 
 Visit the [support forum](https://discourse.drone.io/) for support.
 
+## Contributing
+
+For details on how to contribute changes or additions to this repository, see the [Contributor's guide](CONTRIBUTING.md).
+
 ## License
 
 This repository's contents are licensed under the 2-clause BSD license. See the included [LICENSE](LICENSE) file for a copy.
