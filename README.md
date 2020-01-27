@@ -37,3 +37,7 @@ Due to rapid churn in the Kubernetes ecosystem, charts in this repository assume
 ## Helm Chart and Drone Support
 
 Visit the [support forum](https://discourse.drone.io/) for support.
+
+## License
+
+This repository's contents are licensed under the 2-clause BSD license. See the included [LICENSE](LICENSE) file for a copy.
