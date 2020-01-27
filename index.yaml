@@ -1,0 +1,56 @@
+apiVersion: v1
+entries:
+  drone:
+  - apiVersion: v1
+    created: "2020-01-27T19:47:21.312185278Z"
+    description: Drone is a self-service Continuous Delivery platform for busy development
+      teams
+    digest: 380a18878a7b80aeeccf535fab0c6c1a25dc338e3ec6c90071a155666a2397c3
+    home: https://drone.io/
+    icon: https://drone.io/apple-touch-icon.png
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - drone
+    - drone.io
+    - go
+    kubeVersion: ^1.13.0-0
+    maintainers:
+    - email: hello@drone.io
+      name: Drone
+    name: drone
+    sources:
+    - https://github.com/drone/drone
+    - https://github.com/drone/helm
+    urls:
+    - https://github.com/gtaylor/drone-charts/releases/download/drone-0.1.1/drone-0.1.1.tgz
+    version: 0.1.1
+  drone-runner-kube:
+  - apiVersion: v1
+    created: "2020-01-27T19:47:21.384867941Z"
+    description: The Drone Kubernetes runner launches builds in Kubernetes Jobs
+    digest: e0f0edab17d9ae4849f071de8996323d9ee23e77f101b402f2625d1f81773eed
+    home: https://kube-runner.docs.drone.io/
+    icon: https://drone.io/apple-touch-icon.png
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - drone
+    - drone.io
+    - go
+    kubeVersion: ^1.13.0-0
+    maintainers:
+    - email: hello@drone.io
+      name: Drone
+    name: drone-runner-kube
+    sources:
+    - https://github.com/drone-runners/drone-runner-kube
+    - https://github.com/drone/helm
+    urls:
+    - https://github.com/gtaylor/drone-charts/releases/download/drone-runner-kube-0.1.1/drone-runner-kube-0.1.1.tgz
+    version: 0.1.1
+generated: "2020-01-27T19:47:21.212510531Z"
