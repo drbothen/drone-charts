@@ -1,0 +1,4 @@
+remote: upstream
+chart-dirs:
+  - charts
+build-id: drone-charts-ct
