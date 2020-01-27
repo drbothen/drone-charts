@@ -73,7 +73,14 @@ tolerations: []
 
 affinity: {}
 
+## If you'd like to make additional files or volumes available to the runner, declare additional
+## Volumes here per the Pod spec's "volumes" section.
+## Ref: https://kubernetes.io/docs/concepts/storage/volumes/
+##
 extraVolumes: []
+## If you have declared extra volumes, mount them here, per the Pod Container's
+## "volumeMounts" section.
+##
 extraVolumeMounts: []
 
 ## If you'd like to provide your own Kubernetes Secret object instead of passing your values
