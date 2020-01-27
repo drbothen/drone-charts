@@ -16,7 +16,9 @@
     "nodeSelector",
     "tolerations",
     "affinity",
-    "secretMounts",
+    "extraVolumes",
+    "extraVolumeMounts",
+    "extraSecretNamesForEnvFrom",
     "env"
   ],
   "properties": {
@@ -131,8 +133,16 @@
       "$id": "#/properties/affinity",
       "type": "object"
     },
-    "secretMounts": {
-      "$id": "#/properties/secretMounts",
+    "extraVolumes": {
+      "$id": "#/properties/extraVolumes",
+      "type": "array"
+    },
+    "extraVolumeMounts": {
+      "$id": "#/properties/extraVolumeMounts",
+      "type": "array"
+    },
+    "extraSecretNamesForEnvFrom": {
+      "$id": "#/properties/extraSecretNamesForEnvFrom",
       "type": "array"
     },
     "env": {

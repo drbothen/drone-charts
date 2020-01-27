@@ -47,7 +47,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "drone.fullname" . }}
-          {{- range .Values.secretMounts }}
+          {{- range .Values.extraSecretNamesForEnvFrom }}
             - secretRef:
                 name: {{ .name }}
           {{- end }}
@@ -55,6 +55,9 @@ spec:
             - name: storage-volume
               mountPath: {{ .Values.persistentVolume.mountPath }}
               subPath: "{{ .Values.persistentVolume.subPath }}"
+        {{- with .Values.extraVolumeMounts }}
+            {{ toYaml . | nindent 12 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -68,6 +71,10 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
+      {{- if .Values.extraVolumes }}
+        {{ toYaml .Values.extraVolumes | nindent 8}}
+      {{- end }}
+        {{/* This is where Drone stashes any data it needs to persist. If you use SQLite for your DB, state will go here. */}}
         - name: storage-volume
         {{- if .Values.persistentVolume.enabled }}
           persistentVolumeClaim:
