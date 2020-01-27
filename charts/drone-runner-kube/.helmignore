@@ -20,3 +20,6 @@
 .idea/
 *.tmproj
 .vscode/
+# Chart dirs/files
+docs/
+ci/

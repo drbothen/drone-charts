@@ -1,32 +1,39 @@
 # Drone Helm Charts
 
-This repository hosts official Helm Charts for [Drone](https://drone.io/). These Charts are used to deploy Drone to Kubernetes.
+This repository hosts official [Helm](https://helm.sh/) charts for [Drone](https://drone.io/). These charts are used to deploy Drone to Kubernetes.
 
 ## Install Helm
 
-Get the latest [Helm release](https://github.com/kubernetes/helm#install).
+Read and follow the [Helm installation guide](https://helm.sh/docs/intro/install/).
 
-The Charts in this repository require Helm version 3.x or later. 
+**Note: The charts in this repository require Helm version 3.x or later.** 
 
-## Install Charts
+## Add the Drone Helm Chart repo
 
-You need to add this Chart repo to Helm:
+In order to be able to use the charts in this repository, add the name and URL to your Helm client:
 
 ```console
 helm repo add drone https://charts.drone.io/
 helm repo update
 ```
 
-## Kubernetes version support
+## Install charts
 
-Due to rapid churn in the Kubernetes ecosystem, Charts in this repository assume a version of Kubernetes released in the last 12 months. This typically means one of the last four releases.
+See the the READMEs for the various charts in the [charts](charts) directory. 
 
-**Note: While these Charts may work with versions of older versions of Kubernetes, only releases made in the last year are eligible for support.**
+* If you have not yet installed Drone server, start with the [drone](charts/drone) chart.
+* After installing `drone`, install [drone-runner-kube](charts/drone-runner-kube) to begin executing builds.
 
 ## Documentation
 
 See [Drone](https://drone.io/) or the [Drone documentation](https://docs.drone.io/) site for more information.
 
-## Support
+## Kubernetes version support
+
+Due to rapid churn in the Kubernetes ecosystem, charts in this repository assume a version of Kubernetes released in the last 12 months. This typically means one of the last four releases.
+
+**Note: While these charts may work with versions of older versions of Kubernetes, only releases made in the last year are eligible for support.**
+
+## Helm Chart and Drone Support
 
 Visit the [support forum](https://discourse.drone.io/) for support.

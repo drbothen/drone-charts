@@ -1,36 +1,46 @@
-# Drone
+# Drone server
 
 [Drone](http://drone.io/) is a Continuous Integration platform built on container technology with native Kubernetes support.
 
-This Chart is for installing the [Drone Server](https://docs.drone.io/installation/overview/).
+This Chart is for installing [Drone server](https://docs.drone.io/installation/overview/).
 
-## TL;DR;
+## Installing Drone server
 
-```console
-helm repo add drone https://charts.drone.io/
-helm repo update
-helm install drone/drone
-```
+See the [drone chart installation guide](./docs/install.md).
 
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install --name my-release drone/drone
-```
-
-## Uninstalling the Chart
-
-To uninstall/delete the `my-release` deployment:
-
-```console
-helm delete my-release
-```
-
-The command removes nearly all the Kubernetes components associated with the
-chart and deletes the release.
-
-## Configuration
+## Configuring Drone server
 
 See [values.yaml](values.yaml) to see the Chart's default values. Refer to the [Drone server reference](https://docs.drone.io/installation/reference/) for a more complete list of options.
+
+To adjust an existing Drone install's configuration:
+
+```console
+# If you have a values file:
+helm upgrade drone drone/drone --namespace drone --values drone-values.yaml
+# If you want to change one value and don't have a values file:
+helm upgrade drone drone/drone --namespace drone --reuse-values --set someKey=someVal
+```
+
+## Upgrading Drone server
+
+Read the [release notes](https://discourse.drone.io/c/announcements/6) to make sure there are no backwards incompatible changes. Make adjustments to your values as needed, then run `helm upgrade`:
+
+```console
+# This pulls the latest version of the drone chart from the repo.
+help repo update
+helm upgrade drone drone/drone --namespace drone --values drone-values.yaml
+```
+
+## Uninstalling Drone server
+
+To uninstall/delete the `drone` deployment in the `drone` namespace:
+
+```console
+helm delete drone --namespace drone
+```
+
+Substitute your values if they differ from the examples. See `helm delete --help` for a full reference on `delete` parameters and flags.
+
+## Support
+
+For questions, suggestions, and discussion, visit the [Drone community site](https://discourse.drone.io/).

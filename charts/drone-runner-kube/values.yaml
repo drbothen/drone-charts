@@ -112,16 +112,18 @@ env:
   ##
   # DRONE_RPC_SECRET:
 
-  ## REQUIRED: The hostname/IP (and optionally the port) for your Kubernetes runner.
+  ## The hostname/IP (and optionally the port) for your Kubernetes runner. Defaults to the "drone"
+  ## service that the drone server Chart creates by default.
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-host/
   ##
   DRONE_RPC_HOST: drone
 
+  ## The protocol to use for communication with Drone server.
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-proto/
   ##
   DRONE_RPC_PROTO: http
 
-  ## Determines which Kubernetes namespace to create the build Jobs in.
+  ## Determines the default Kubernetes namespace for Drone builds to run in.
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-namespace-default/
   ##
   DRONE_NAMESPACE_DEFAULT: default
