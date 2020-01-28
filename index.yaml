@@ -2,6 +2,33 @@ apiVersion: v1
 entries:
   drone:
   - apiVersion: v1
+    appVersion: 1.6.4
+    created: "2020-01-28T18:22:54.543332832Z"
+    description: Drone is a self-service Continuous Delivery platform for busy development
+      teams
+    digest: bd8b099cd30b2a7d85f1bf83d729c90dcd8be11d95c25b6211077b08198bd136
+    home: https://drone.io/
+    icon: https://drone.io/apple-touch-icon.png
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - drone
+    - drone.io
+    - go
+    kubeVersion: ^1.13.0-0
+    maintainers:
+    - email: hello@drone.io
+      name: Drone
+    name: drone
+    sources:
+    - https://github.com/drone/drone
+    - https://github.com/drone/helm
+    urls:
+    - https://github.com/gtaylor/drone-charts/releases/download/drone-0.1.2/drone-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v1
     created: "2020-01-27T19:47:21.312185278Z"
     description: Drone is a self-service Continuous Delivery platform for busy development
       teams
@@ -28,6 +55,32 @@ entries:
     - https://github.com/gtaylor/drone-charts/releases/download/drone-0.1.1/drone-0.1.1.tgz
     version: 0.1.1
   drone-runner-kube:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2020-01-28T18:22:54.760969886Z"
+    description: The Drone Kubernetes runner launches builds in Kubernetes Jobs
+    digest: 94708a8d1d0ac5912eb1aed38c8069600832461a89fb3d92c4ef681b0779536d
+    home: https://kube-runner.docs.drone.io/
+    icon: https://drone.io/apple-touch-icon.png
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - drone
+    - drone.io
+    - go
+    kubeVersion: ^1.13.0-0
+    maintainers:
+    - email: hello@drone.io
+      name: Drone
+    name: drone-runner-kube
+    sources:
+    - https://github.com/drone-runners/drone-runner-kube
+    - https://github.com/drone/helm
+    urls:
+    - https://github.com/gtaylor/drone-charts/releases/download/drone-runner-kube-0.1.2/drone-runner-kube-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v1
     created: "2020-01-27T19:47:21.384867941Z"
     description: The Drone Kubernetes runner launches builds in Kubernetes Jobs
