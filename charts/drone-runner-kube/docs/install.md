@@ -10,7 +10,7 @@ This page is not intended to be a comprehensive guide to installing the Drone Ku
 
 ## Configuration (values)
 
-**Note: The [drone](../../drone/README.md) installation guide assumes that Drone and the Kubernetes runner are installed in the `drone` namespace. Feel free to change this as desired, but we suggest putting Drone server and the Kubernetes runner in the same namespace as a start.**
+**Note: This guide assumes that Drone and the Kubernetes runner are installed in the `drone` namespace. Feel free to change this as desired, but we suggest putting Drone server and the Kubernetes runner in the same namespace as a start.**
 
 In order to install the chart, you'll need to pass in additional configuration. This configuration comes in the form of Helm values, which are key/value pairs. A minimal install of Drone server requires the following values:
 
@@ -41,13 +41,6 @@ env:
 Copy these into a new file, which we'll call `drone-runner-kube-values.yaml`. Adjust the included defaults to reflect your environment. For the ful list of configurables, see the [configuration reference](https://kube-runner.docs.drone.io/installation/reference/). 
 
 ## Run the installation
-
-Create the namespace to install the Drone Kubernetes runner in if it does not already exist:
-
-```console
-$ kubectl create ns drone
-namespace/drone created
-```
 
 Run `helm install` with your values provided:
 

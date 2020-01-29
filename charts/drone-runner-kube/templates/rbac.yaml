@@ -17,25 +17,25 @@ metadata:
   labels:
     {{- include "drone-runner-kube.labels" $root | nindent 4 }}
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - secrets
-  verbs:
-  - create
-  - delete
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  - pods/log
-  verbs:
-  - get
-  - create
-  - delete
-  - list
-  - watch
-  - update
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - create
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/log
+    verbs:
+      - get
+      - create
+      - delete
+      - list
+      - watch
+      - update
 {{ end -}}
 
 {{/* The role gets bound to the runner's ServiceAccount in the runner's namespace. */}}
@@ -49,9 +49,9 @@ metadata:
   labels:
     {{- include "drone-runner-kube.labels" $root | nindent 4 }}
 subjects:
-- kind: ServiceAccount
-  name: {{ include "drone-runner-kube.fullname" $root }}
-  namespace: {{ $root.Release.Namespace }}
+  - kind: ServiceAccount
+    name: {{ include "drone-runner-kube.fullname" $root }}
+    namespace: {{ $root.Release.Namespace }}
 roleRef:
   kind: Role
   name: {{ include "drone-runner-kube.fullname" $root }}
